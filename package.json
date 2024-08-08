@@ -1,0 +1,24 @@
+{
+  "name": "vuelos",
+  "version": "1.0.0",
+  "description": "Pagina que registra vuelos, da de baja y pueden modificarse. Utiliza el stack MERN",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon sources/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "samuelomendez",
+  "license": "ISC",
+  "keywords": [],
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.5.2",
+    "morgan": "^1.10.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}
