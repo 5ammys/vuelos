@@ -1,27 +1,27 @@
 import mongoose from "mongoose";
 
 const vueloSchema = new mongoose.Schema({
-  vueloNumber:{
-    type:String,
-    required:true,
-    trim:true
+  timeArrive: {
+    type: Date, 
+    required: true,
   },
-  timeArrive:{
-    type:Date,
-    required:true,
-    trim:true
+  flightNumber: {
+    type: String,
+    required: true,
+    unique: true, 
+    trim: true,
   },
-  empresa:{
-   type:String,
-   required:true,
+  airlineName: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  isDelayed: {
+    type: Boolean,
+    default: false,
+  },
+}, {
+  timestamps: true,
+});
 
-  },
-  demorado:{  
-    type:Boolean
-  }
-},
-{
-  timestamps:true
-})
-
-export default mongoose.model('Vuelo',vueloSchema);
+export default mongoose.model('Vuelo', vueloSchema);

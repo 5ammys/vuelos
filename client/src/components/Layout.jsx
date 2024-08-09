@@ -2,35 +2,35 @@ import { Outlet,Link } from "react-router-dom";
 
 function Layout() {
   return ( 
-    <>
+    <div className="bg-slate-100 flex flex-col h-screen">
       <nav>
-        <ul>
-          <li className="enlaces">
+        <ul className="flex bg-black text-slate-400 text-2xl ">
+          <li className="m-2 ml-32 hover:text-white">
             <Link to='/main'>
               Vuelos
             </Link>
           </li>
-          <li className="enlaces">
+          <li className="m-2 hover:text-white">
             <Link to='/alta'>
               Alta
             </Link>
           </li>
-          <li className="enlaces">
+          <li className="m-2 hover:text-white">
             <Link to='/modificacion'>
               Modificacion
             </Link>
           </li>
-          <li className="enlaces">
+          <li className="m-2 hover:text-white">
           <Link to='/baja'>
             Baja
           </Link>
           </li>
         </ul>
       </nav>
-      <main>
+      <main className="mx-28 text-xl flex-grow overflow-hidden">
         <Outlet />
       </main>
-    </>
+    </div>
    );
 }
 

@@ -6,12 +6,12 @@ import {
   getVuelos
 } from '../controllers/vuelos.controller.js'
 import { validateSchema } from '../middlewares/validateData.js'
-
+import { vuelosSchema } from '../schemas/vuelos.schema.js';
 const router = Router();
 
-router.post('/vuelo',createVuelo);
-router.put('/vuelo/:id',updateVuelo);
-router.delete('/vuelo/:id',deleteVuelo);
-router.get('/vuelo',getVuelos);
+router.post('/flight',validateSchema(vuelosSchema),createVuelo);
+router.put('/flight/:id',updateVuelo);
+router.delete('/flight/:id',deleteVuelo);
+router.get('/flights',getVuelos);
 
 export default router;

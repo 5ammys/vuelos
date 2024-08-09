@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { FlyProvider } from './context/vuelos.context.jsx';
+import { FlyProvider,useFly } from './context/vuelos.context.jsx';
 import Layout from './components/Layout.jsx'
 import Form from './components/Form.jsx';
 import Vuelos from './components/Vuelos.jsx';
@@ -12,13 +12,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route path="main" element={<Vuelos />} />
-            <Route path="alta" element={
-              <Form title={"Alta"} btn={"Guardar"} />
-              } />
-            <Route path="modificacion" element={
-              <Form title={"Editar"} btn={"Editar"} />
-              } />
+            <Route path="alta" element={<AltaForm />}/>
             <Route path="baja" element={<Baja />} />
+            <Route path="modificacion" element={<ModificacionForm />} />
           </Route>
         </Routes>
       </BrowserRouter>
@@ -26,4 +22,13 @@ function App() {
   )
 }
 
+function AltaForm() {
+  const { saveVuelo } = useFly();
+  return <Form title="Alta" btn="Guardar" callback={saveVuelo} />;
+}
+
+function ModificacionForm() {
+  const { modVuelo } = useFly();
+  return <Form title="Modificar" btn="Editar" callback={modVuelo} />;
+}
 export default App;

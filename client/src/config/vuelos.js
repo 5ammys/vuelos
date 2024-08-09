@@ -1,6 +1,6 @@
 import axios from './axios.js'
 
-export const saveFly = fly => axios.post('/fly',fly)
-export const updateFly = fly => axios.put(`/fly/${fly.id}`,fly)
-export const deleteFly = fly => axios.delete(`/fly/${fly.id}`)
-export const getFlies = () => axios.get('/fly')
+export const saveFly = fly => axios.post('/flight',fly)
+export const updateFly = fly => axios.put(`/flight/${fly.id}`,fly)
+export const deleteFly = id => axios.delete(`/flight/${id}`)
+export const getFlies = () => axios.get('/flights')
