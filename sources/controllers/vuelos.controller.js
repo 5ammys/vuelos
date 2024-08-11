@@ -64,7 +64,6 @@ export const updateVuelo = async (req, res) => {
 
 export const deleteVuelo = async (req,res) => {
   const flightNumber = req.params.id
-  console.log(flightNumber)
   try {
     const vuelo = await Vuelo.findOneAndDelete({flightNumber})
     if(!vuelo) return res.status(404).json(['El vuelo no fue encontrado']);

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
 
 function Baja() {
-  const [selected,setIsSelected] = useState('');
+  const [selected,setIsSelected] = useState(null);
 
   const {
     vuelos,
@@ -20,19 +20,17 @@ function Baja() {
 
   const handleDelete = () => {
     if (selected) {
-      console.log(selected)
       deleteVuelo(selected);
       Swal.fire({
         title: '¡Eliminado!',
         text: 'El vuelo fue eliminado correctamente.',
-        icon: 'error',
-        confirmButtonText: 'OK'
+        icon: 'success',
+        position:'bottom-end',
+        showConfirmButton:false,
+        timer:2000,
+        toast:true
       }).then(() => {
-        console.log('SweetAlert cerrado, navegando a /main');
-        // Navegar después de que el usuario cierre la alerta
         navigate('/main');
-      }).catch((error) => {
-        console.error('Error con SweetAlert:', error);
       });
     }
   };

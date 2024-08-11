@@ -18,9 +18,9 @@ function Vuelos() {
     <table className="table-auto border-spacing-x-20">
       <thead>
         <tr>
-          <th className=" pr-28">Horario de Llegada</th>
+          <th className=" pr-20 ">Horario de Llegada</th>
           <th className=" pr-20">Vuelo</th>
-          <th className=" pr-36">Línea Aérea</th>
+          <th className=" pr-48">Línea Aérea</th>
           <th className=" pr-8">Demorado</th>
         </tr>
       </thead>
@@ -37,7 +37,7 @@ function Vuelos() {
               <td className=" pr-5 ">{hours}</td>
               <td className=" pr-5 ">{vuelo.flightNumber}</td>
               <td className=" pr-5 ">{vuelo.airlineName}</td>
-              <td className=" pr-5 ">{vuelo.isDelayed ? 'Sí' : 'No'}</td>
+              <td className=" pr-5 ">{vuelo.isDelayed ? <div className="text-red-600">Si</div> : 'No' }</td>
             </tr>
           );
         })}

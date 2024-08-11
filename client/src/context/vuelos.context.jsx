@@ -13,32 +13,31 @@ export const useFly = () => {
 
 export const FlyProvider = ({children}) => {
   const [vuelos,setVuelos] = useState([]);
-  const [errors,setErrors] = useState([]);
   
   const saveVuelo = async (data) => {
     try {
-      const res = await saveFly(data)
-    } catch (error) {
-      console.log(data)
-      setErrors(error.response.data)
+      const res = await saveFly(data);
+      
+    } catch (err) {
+      
     }
   }
 
   const modVuelo = async (vuelo) => {
     try {
       const res = await updateFly(vuelo); 
-      getVuelos();
+      
     } catch (error) {
-      setErrors(error.response.data)
+      
     }
   }
 
   const deleteVuelo = async (id) => {
     try {
+      
       const res = await deleteFly(id);
-      getVuelos();
     } catch (error) {
-      setErrors(error.response.data)
+      
     }
   }
 
@@ -47,7 +46,8 @@ export const FlyProvider = ({children}) => {
       const res = await getFlies();
       setVuelos(res.data);
     } catch (error) {
-      setErrors(error.response)
+
+      
     }
   }
 
@@ -55,11 +55,10 @@ export const FlyProvider = ({children}) => {
     <FlyContext.Provider
     value={{
       vuelos,
-      errors,
       saveVuelo,
       modVuelo,
       deleteVuelo,
-      getVuelos
+      getVuelos,
     }}>
       {children}
     </FlyContext.Provider>
