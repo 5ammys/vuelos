@@ -45,7 +45,7 @@ El usuario puede reiniciar el juego o regresar al menú principal para cambiar l
 
 Cómo Usar:
 Clona o descarga el repositorio en tu máquina local.
-Abre index.html en tu navegador.
+Abre color-view.html en tu navegador.
 Selecciona la dificultad del juego.
 Intenta adivinar el color correcto haciendo clic en los colores mostrados.
 Observa si tu elección fue correcta a través del modal que se despliega.
