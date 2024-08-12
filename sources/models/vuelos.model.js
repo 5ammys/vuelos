@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-
+//Se crea el Schema con el objeto detallado 
 const vueloSchema = new mongoose.Schema({
   timeArrive: {
     type: Date, 
@@ -23,5 +23,5 @@ const vueloSchema = new mongoose.Schema({
 }, {
   timestamps: true,
 });
-
+// Se exporta el Schema con el nombre 'Vuelo'
 export default mongoose.model('Vuelo', vueloSchema);

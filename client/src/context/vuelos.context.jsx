@@ -1,65 +1,57 @@
-import { createContext, useContext,useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { deleteFly, getFlies, saveFly, updateFly } from "../config/vuelos";
 
+// Crear un contexto para los vuelos
 export const FlyContext = createContext();
- 
+
+// Custom hook para usar el contexto de vuelos
 export const useFly = () => {
   const context = useContext(FlyContext);
-  if(!context) {
+  if (!context) {
     throw new Error('useFly debe ser usado con un Provider');
   }
   return context;
 }
 
-export const FlyProvider = ({children}) => {
-  const [vuelos,setVuelos] = useState([]);
-  
+// Proveedor del contexto de vuelos
+// Cabe destacar, que si bien, deberia usarse trycatch para manejar las funciones asincronicas
+// En este caso, el manejo de errores se lo encarga vuelos.js por medio del interceptor de axios
+
+export const FlyProvider = ({ children }) => {
+  // Estado para almacenar los vuelos
+  const [vuelos, setVuelos] = useState([]);
+
+  // Función para guardar un nuevo vuelo
   const saveVuelo = async (data) => {
-    try {
-      const res = await saveFly(data);
-      
-    } catch (err) {
-      
-    }
+     await saveFly(data);
   }
 
+  // Función para modificar un vuelo existente
   const modVuelo = async (vuelo) => {
-    try {
-      const res = await updateFly(vuelo); 
-      
-    } catch (error) {
-      
-    }
+    await updateFly(vuelo);
   }
 
+  // Función para eliminar un vuelo
   const deleteVuelo = async (id) => {
-    try {
-      
-      const res = await deleteFly(id);
-    } catch (error) {
-      
-    }
+    await deleteFly(id);
   }
 
+  // Función para obtener la lista de vuelos
   const getVuelos = async () => {
-    try {
-      const res = await getFlies();
-      setVuelos(res.data);
-    } catch (error) {
-
-      
-    }
+    const res = await getFlies();
+    setVuelos(res.data); // Actualiza el estado con los datos obtenidos
   }
 
+  // Proporcionar el estado y funciones a los componentes hijos
   return (
     <FlyContext.Provider
-    value={{
-      vuelos,
-      saveVuelo,
-      modVuelo,
-      deleteVuelo,
-      getVuelos,
-    }}>
+      value={{
+        vuelos,
+        saveVuelo,
+        modVuelo,
+        deleteVuelo,
+        getVuelos,
+      }}>
       {children}
     </FlyContext.Provider>
   )

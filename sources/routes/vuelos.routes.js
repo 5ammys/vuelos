@@ -10,7 +10,7 @@ import { vuelosSchema } from '../schemas/vuelos.schema.js';
 const router = Router();
 
 router.post('/flight',validateSchema(vuelosSchema),createVuelo);
-router.put('/flight/:id',updateVuelo);
+router.put('/flight/:id',validateSchema(vuelosSchema),updateVuelo);
 router.delete('/flight/:id',deleteVuelo);
 router.get('/flights',getVuelos);
 
